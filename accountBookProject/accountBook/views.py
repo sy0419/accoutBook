@@ -43,6 +43,8 @@ def delete_transaction(request, pk):
         return redirect('transaction_list') # 삭제 후 거래 목록 페이지로 리다이렉트 / Redirect to transaction list after delete
     return render(request, 'delete_transaction.html', {'transaction': transaction}) # 확인 페이지 렌더링 / Render confirmation page
 
+# 카테고리별 거래 금액 합계를 계산하여 보여주는 뷰
+# View to show the total transaction amount grouped by category
 def category_summary(request):
-    summary = Transaction.objects.values('category').annotate(total_amount=Sum('amount'))
-    return render(request, 'category_summary.html', {'summary': summary})
+    summary = Transaction.objects.values('category').annotate(total_amount=Sum('amount')) # 각 카테고리의 총 합계 계산 / Sum per category
+    return render(request, 'category_summary.html', {'summary': summary}) # 템플릿에 결과 전달 / Render result to template
