@@ -61,26 +61,26 @@ source venv/bin/activate  # macOS/Linux
 
 ```bash
 pip install -r requirements.txt
-'''
+```
 If requirements.txt doesn't exist, manually install Django:
 ```bash
 pip install django
-'''
+```
 
 ### 4.Apply migrations
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-'''
+```
 
 ### 5. Run the server
 ```bash
 python manage.py runserver
-'''
+```
 Then go to http://127.0.0.1:8000 in your browser.
 
 ### 📁 Project Structure (Main Parts)
-'''bash
+```bash
 accountBookProject/
 ├── accountBook/                 # Main Django app
 │   ├── migrations/
@@ -100,10 +100,10 @@ accountBookProject/
 │   └── urls.py                  # Project-level routes
 ├── db.sqlite3                   # SQLite database
 └── manage.py                    # Django entry point
-'''
+```
 
 ### 📝 Transaction Model
-'''bash
+```bash
 class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
@@ -114,7 +114,7 @@ class Transaction(models.Model):
     ]
     category = models.CharField(max_length=7, choices=CATEGORY_CHOICES)
     description = models.CharField(max_length=255, blank=True)
-'''
+```
 
 ### 🙌 Author
 
