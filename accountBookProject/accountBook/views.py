@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TransactionForm
 from .models import Transaction  
+from django.db.models import Sum
 
 # 홈 페이지 / Home page
 def home(request):
@@ -41,3 +42,7 @@ def delete_transaction(request, pk):
         transaction.delete()
         return redirect('transaction_list') # 삭제 후 거래 목록 페이지로 리다이렉트 / Redirect to transaction list after delete
     return render(request, 'delete_transaction.html', {'transaction': transaction}) # 확인 페이지 렌더링 / Render confirmation page
+
+def category_summary(request):
+    summary = Transaction.objects.values('category').annotate(total_amount=Sum('amount'))
+    return render(request, 'category_summary.html', {'summary': summary})
