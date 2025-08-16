@@ -111,6 +111,7 @@ class Transaction(models.Model):
 
 ### 🙌 제작자
 박신영
+
 Django로 간단히 수입과 지출을 관리하고자 만들어진 프로젝트입니다.
 피드백과 기여는 언제나 환영합니다!
 
