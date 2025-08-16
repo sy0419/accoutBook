@@ -37,6 +37,31 @@
             {% endfor %}
         </tbody>
     </table>
+    <h2>카테고리별 합계 / Summary by Category</h2>
+    <table border="1">
+    <tr><th>카테고리</th><th>총 금액</th></tr>
+    {% for item in category_summary %}
+        <tr>
+        <td>{{ item.category }}</td>
+        <td>{{ item.total_amount }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="2">데이터가 없습니다.</td></tr>
+    {% endfor %}
+    </table>
+
+    <h2>월별 합계 / Monthly Summary</h2>
+    <table border="1">
+    <tr><th>월</th><th>총 금액</th></tr>
+    {% for item in monthly_summary %}
+        <tr>
+        <td>{{ item.month|date:"Y-m" }}</td>
+        <td>{{ item.total_amount }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="2">데이터가 없습니다.</td></tr>
+    {% endfor %}
+    </table>
     <a href="{% url 'add_transaction' %}">새 거래 추가 / Add New Transaction</a>
 </body>
 </html>
