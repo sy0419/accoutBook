@@ -14,12 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from accountBook import views
 
 urlpatterns = [
-    # Django admin 페이지를 위한 URL / URL for Django admin page
-    path('admin/', admin.site.urls),
-    # accountBook 앱의 URL을 포함 / Include URLs from accountBook app
-    path('', include('accountBook.urls')),
+    path('', views.home, name='home'),  # 홈 페이지
+    path('transactions/', views.transaction_list, name='transaction_list'),  # 거래 목록 페이지
 ]

@@ -12,4 +12,4 @@ class Transaction(models.Model):
 
     category = models.CharField(max_length=7, choices=CATEGORY_CHOICES)
 
-    description = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=255, blank=True)  
