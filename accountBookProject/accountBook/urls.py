@@ -4,6 +4,7 @@ from . import views
 
 # URL 패턴 정의 / Define URL patterns
 urlpatterns = [
-    # 기본 URL에 home 뷰 연결 / Link home view to the root URL
-    path('', views.home, name='home'),  
+    path('', views.home, name='home'),  # 홈 페이지 / Home page
+    path('transactions/', views.transaction_list, name='transaction_list'),  # 트랜잭션 목록 페이지 / Transaction list page
+    path('transactions/add/', views.add_transaction, name='add_transaction'),  # 트랜잭션 추가 페이지 / Transactiono adding page
 ]
