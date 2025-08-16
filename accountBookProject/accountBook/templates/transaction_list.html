@@ -49,6 +49,10 @@
         <tr><td colspan="2">데이터가 없습니다.</td></tr>
     {% endfor %}
     </table>
+    <!-- 카테고리별 합계 페이지로 이동하는 버튼 -->
+    <a href="{% url 'category_summary' %}">
+        <button>카테고리별 집계 페이지로 이동 / Go to Category Summary</button>
+    </a>
 
     <h2>월별 합계 / Monthly Summary</h2>
     <table border="1">
@@ -62,6 +66,9 @@
         <tr><td colspan="2">데이터가 없습니다.</td></tr>
     {% endfor %}
     </table>
+    <a href="{% url 'monthly_summary' %}">
+        <button>월별 집계 페이지로 이동 / Go to Monthly Summary</button>
+    </a>
     <a href="{% url 'add_transaction' %}">새 거래 추가 / Add New Transaction</a>
 </body>
 </html>
