@@ -1,0 +1,20 @@
+<!-- edit_transaction.html -->
+ <!DOCTYPE html>
+ <html lang="ko,en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Transaction</title>
+</head>
+<body>
+    <h1>Edit Transation</h1>
+
+    <!-- 거래 수정 폼 렌더링 / Render the transaction edit form -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Transaction</button>
+    </form>
+
+    <a href="{% url 'transaction_list' %}">Back to transaction list</a>
+</body>
+ </html>
