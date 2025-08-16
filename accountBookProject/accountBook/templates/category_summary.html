@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko,en">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리별 집계 / Category Summary</title>
+</head>
+<body>
+    <h1>카테고리별 집계 / Summary by Category</h1>
+
+    <!-- 집계 테이블 시작 / Start of summary table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>카테고리 / Category</th>
+                <th>총 금액 / Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in summary %}
+            <tr>
+                <td>{{ item.category }}</td> <!-- 카테고리 이름 / Category name -->
+                <td>{{ item.total_amount }}</td> <!-- 총 금액 / Total amount -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">데이터가 없습니다. / No data available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 돌아가기 링크 / Back to transaction list -->
+    <a href="{% url 'transaction_list' %}">← 거래 목록으로 / Back to Transaction List</a>
+</body>
+</html>
