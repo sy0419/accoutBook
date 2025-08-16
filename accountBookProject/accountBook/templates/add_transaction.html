@@ -1,0 +1,21 @@
+<!-- add_transaction.html -->
+<DOCTYPE html>
+<html lang="'ko, en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add transaction</title>
+</head>
+<body>
+    <h1>Add a new Transaction</h1>
+
+    <!-- 트랜잭션 폼을 렌더링 / Render the transaction form -->
+     <form method="POST">
+        {% csrf_token %}
+        {{ form.as-p }}
+        <button type="submit">Save transaction</button>
+     </form>
+
+     <a href="{% url 'transaction_list' %}">Back to transaction list</a>
+</body>
+</html>
+</DOCTYPE>
