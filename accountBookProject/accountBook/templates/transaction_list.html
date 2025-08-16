@@ -22,7 +22,7 @@
             {% for transaction in transactions %}
                 <tr>
                     <td>{{ transaction.date }}</td>
-                    <td>{{ transaction.account }}</td>
+                    <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.get_category_display }}</td>
                     <td>{{ transaction.description }}</td>
                     <td>
