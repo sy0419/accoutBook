@@ -1,6 +1,6 @@
 <!-- add_transaction.html -->
-<DOCTYPE html>
-<html lang="'ko, en">
+<!DOCTYPE html>
+<html lang="ko, en">
 <head>
     <meta charset="UTF-8">
     <title>Add transaction</title>
@@ -11,7 +11,7 @@
     <!-- 트랜잭션 폼을 렌더링 / Render the transaction form -->
      <form method="POST">
         {% csrf_token %}
-        {{ form.as-p }}
+        {{ form.as_p }}
         <button type="submit">Save transaction</button>
      </form>
 
