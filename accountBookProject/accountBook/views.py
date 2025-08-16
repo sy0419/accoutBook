@@ -10,8 +10,19 @@ def home(request):
 
 # 트랜잭션 목록 페이지 / Transaction list page
 def transaction_list(request):
-    transactions = Transaction.objects.all()  # 트랜잭션 데이터를 모두 가져오기
-    return render(request, 'transaction_list.html', {'transactions': transactions})
+    transactions = Transaction.objects.all()
+    category_summary = transactions.values('category').annotate(total_amount=Sum('amount'))
+    monthly_summary = transactions.annotate(month=TruncMonth('date')) \
+                                  .values('month') \
+                                  .annotate(total_amount=Sum('amount')) \
+                                  .order_by('month')
+
+    context = {
+        'transactions': transactions,
+        'category_summary': category_summary,
+        'monthly_summary': monthly_summary,
+    }
+    return render(request, 'transaction_list.html', context)
 
 # 트랜잭션 추가 페이지 / Add transaction page
 def add_transaction(request):
