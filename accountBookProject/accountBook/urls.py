@@ -9,5 +9,6 @@ urlpatterns = [
     path('transactions/add/', views.add_transaction, name='add_transaction'),  # 트랜잭션 추가 페이지 / Transactiono adding page
     path('transactions/<int:pk>/edit/', views.edit_transaction, name='edit_transaction'),  # 거래 수정 페이지 / Edit transaction page
     path('transactions/delete/<int:pk>/', views.delete_transaction, name='delete_transaction'),  # 거래 삭제 페이지 / Delete transaction page
-    path('transactions/summary/', views.category_summary, name='category_summary'),
+    path('transactions/summary/', views.category_summary, name='category_summary'), # 카테고리별 집계 페이지 / Summary by category page
+    path('transactions/monthly-summary/', views.monthly_summary, name='monthly_summary'), # 월별 집계 페이지 / Summary by month page
 ]
