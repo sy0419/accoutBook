@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TransactionForm
 from .models import Transaction  
 from django.db.models import Sum
+from django.db.models.functions import TruncMonth
 
 # 홈 페이지 / Home page
 def home(request):
@@ -48,3 +49,14 @@ def delete_transaction(request, pk):
 def category_summary(request):
     summary = Transaction.objects.values('category').annotate(total_amount=Sum('amount')) # 각 카테고리의 총 합계 계산 / Sum per category
     return render(request, 'category_summary.html', {'summary': summary}) # 템플릿에 결과 전달 / Render result to template
+
+# 월별 거래 금액 합계 조회 뷰 / View to compute monthly transaction totals
+def monthly_summary(request):
+    summary = (
+        Transaction.objects
+        .annotate(month=TruncMonth('date'))              # 날짜를 월 단위로 자르기 / Truncate date to month
+        .values('month')                                 # 월별 그룹화 / Group by month
+        .annotate(total_amount=Sum('amount'))            # 각 월에 대한 금액 합계 계산 / Sum of amounts per month
+        .order_by('month')                               # 월 순서대로 정렬 / Order by month
+    )
+    return render(request, 'monthly_summary.html', {'summary': summary})
