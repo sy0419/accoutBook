@@ -1,0 +1,32 @@
+<!-- monthly_summary.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>월별 거래 합계 / Monthly Summary</title>
+</head>
+<body>
+    <h1>월별 거래 합계 / Monthly Transaction Summary</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>월 (Year‑Month)</th>
+                <th>총 금액 (Total Amount)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in summary %}
+                <tr>
+                    <td>{{ item.month|date:"Y‑m" }}</td>
+                    <td>{{ item.total_amount }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">데이터가 없습니다. / No data available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'transaction_list' %}">← 거래 목록으로 / Back to Transaction List</a>
+</body>
+</html>
