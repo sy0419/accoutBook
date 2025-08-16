@@ -46,7 +46,7 @@ Users can add, edit, delete transactions, and view summaries by category and mon
 ```bash
 git clone https://github.com/your-username/account-book.git
 cd account-book
-'''
+```
 
 ### 2. Set up a virtual environment
 
@@ -55,7 +55,7 @@ python -m venv venv
 source venv/Scripts/activate  # Windows
 # or
 source venv/bin/activate  # macOS/Linux
-
+```
 
 ### 3. Install dependencies
 
