@@ -1,0 +1,24 @@
+<!-- delete_transaction.html -->
+<!DOCTYPE html>
+<html lang="ko,en">
+<head>
+    <meta charset="UTF-8">
+    <title>거래 삭제 확인 / Confirm Delete Transaction</title>
+</head>
+<body>
+    <h1>거래 삭제 확인</h1>
+    <p>다음 거래를 정말 삭제하시겠습니까?</p>
+    <ul>
+        <li>날짜 (Date): {{ transaction.date }}</li>
+        <li>금액 (Amount): {{ transaction.account }}</li>
+        <li>카테고리 (Category): {{ transaction.get_category_display }}</li>
+        <li>설명 (Description): {{ transaction.description }}</li>
+    </ul>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">삭제하기 (Delete)</button>
+        <a href="{% url 'transaction_list' %}">취소 (Cancel)</a>
+    </form>
+</body>
+</html>
