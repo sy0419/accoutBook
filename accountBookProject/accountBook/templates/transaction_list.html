@@ -15,6 +15,7 @@
                 <th>금액 Price</th>
                 <th>카테고리 Category</th>
                 <th>설명 Description</th>
+                <th>작업 Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,10 @@
                     <td>{{ transaction.account }}</td>
                     <td>{{ transaction.get_category_display }}</td>
                     <td>{{ transaction.description }}</td>
+                    <td>
+                        <!-- 수정 링크 추가 / Add edit link -->
+                        <a href="{% url 'edit_transaction' transaction.pk %}">수정 / Edit</a>
+                    </td>
                 </tr>
             {% empty %}
                 <tr>
